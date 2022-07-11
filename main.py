@@ -13,7 +13,7 @@ options = FirefoxOptions()
 options.add_argument("--headless")
 
 browser = webdriver.Firefox(options=options, executable_path=r'./geckodriver')
-browser.get("https://www.lectio.dk/lectio/577/login.aspx")
+browser.get("%s/login.aspx"%os.getenv('BASEURL'))
 
 # Logges into lectio
 browser.find_element(By.ID, "username").send_keys(os.getenv('STUDENT'))
@@ -24,7 +24,7 @@ browser.find_element(By.ID, "m_Content_submitbtn2").click()
 time.sleep(1)
 
 # Goes to url of this weeks classes &week=272022
-browser.get("https://www.lectio.dk/lectio/577/SkemaNy.aspx?type=elev&elevid=43439481354&week=262022")
+browser.get("%s/SkemaNy.aspx?type=elev&elevid=%s&week=262022"%(os.getenv('BASEURL'), os.getenv('ELEVID')))
 
 time.sleep(1)
 
