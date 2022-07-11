@@ -24,7 +24,7 @@ browser.find_element(By.ID, "m_Content_submitbtn2").click()
 time.sleep(1)
 
 # Goes to url of this weeks classes &week=272022
-browser.get("%s/SkemaNy.aspx?type=elev&elevid=%s&week=262022"%(os.getenv('BASEURL'), os.getenv('ELEVID')))
+browser.get("%s/SkemaNy.aspx?type=elev&elevid=%s&week=262022"%(os.getenv('BASEURL'), os.getenv('STUDENTID')))
 
 time.sleep(1)
 
