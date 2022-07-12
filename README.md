@@ -5,6 +5,7 @@ A way to interact with lectio through programming
 - `Programming language`: [Python 3.10.4](https://www.python.org/downloads/)
 - `package manager`: [pip]()
 - `Os`: [Popos 22.04](https://pop.system76.com/)
+- `Browser`: [Firefox](https://www.mozilla.org/en-US/firefox/download/thanks/)
 
 ## Env file
 The env file is used to store personal credentials and information
