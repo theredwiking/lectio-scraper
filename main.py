@@ -1,6 +1,6 @@
 import time
 import os
-from utils import saveData
+from utils import convertToJson, saveData
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -28,23 +28,34 @@ browser.get("%s/SkemaNy.aspx?type=elev&elevid=%s&week=262022"%(os.getenv('BASEUR
 
 time.sleep(1)
 
+# Gets the week number and year for the periode the classes take place
+week = browser.find_element(By.XPATH, "/html/body/div[1]/form[2]/section/div[3]/div[2]/table/tbody/tr[1]/td").text
+
+# Array contaning all lessons information for the given periode
+periode_lessons = []
+
+# Loops through all day in the week and find all lessons within that week
 for days in range(2, 7):
-    week = browser.find_element(By.XPATH, "/html/body/div[1]/form[2]/section/div[3]/div[2]/table/tbody/tr[1]/td").text
     day = "/html/body/div[1]/form[2]/section/div[3]/div[2]/table/tbody/tr[4]/td[%d]"%days
     try:
         browser.find_element(By.XPATH, day)
         for lessons in range(1, 10):
             lesson = "%s/div[1]/a[%d]"%(day, lessons)
             try:
+                # The actual data for a specific lesson
                 data = browser.find_element(By.XPATH, lesson).get_attribute("data-additionalinfo")
-                saveData(data, week)
+                convertToJson(data, periode_lessons)
             except:
                 print("Lesson not found")
                 pass
     except:
         print("Day not found")
         pass
-    
+
+# Saves periode_lessons array to a text file with the name of the week and year
+saveData(periode_lessons, week)
+
 time.sleep(1)
 
+# Closes open browser maybe not need in headless mode not sure
 browser.quit()
