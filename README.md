@@ -36,3 +36,6 @@ pip3 install selenium python-dotenv
 ```bash 
 python3 main.py
 ```
+
+## Resources
+1. [AttributeError](https://pythoninoffice.com/fixing-attributeerror-webdriver-object-has-no-attribute-find_element_by_xpath/)
