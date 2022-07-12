@@ -1,8 +1,8 @@
-import time
 import os
-from utils import convertToJson, saveData
+import time
 from dotenv import load_dotenv
 from selenium import webdriver
+from utils import convertToJson, saveData
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
